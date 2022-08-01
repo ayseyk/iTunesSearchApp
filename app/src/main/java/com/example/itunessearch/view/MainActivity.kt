@@ -1,7 +1,8 @@
-package com.example.itunessearch
+package com.example.itunessearch.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.itunessearch.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
