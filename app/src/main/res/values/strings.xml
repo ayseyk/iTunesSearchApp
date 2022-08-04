@@ -7,6 +7,13 @@
     <string name="books">Books</string>
     <string name="searchHilt">Movies, Music, Apps or Books</string>
 
+    <string-array name="searchOptionsForApi">
+        <item>musicTrack</item>
+        <item>movie</item>
+        <item>software</item>
+        <item>ebook</item>
+    </string-array>
+
     <string-array name="searchOptions">
         <item>Music</item>
         <item>Movies</item>

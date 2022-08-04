@@ -18,5 +18,9 @@
         android:id="@+id/detailFragment"
         android:name="com.example.itunessearch.view.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="searchItem"
+            app:argType="com.example.itunessearch.model.SearchItem" />
+    </fragment>
 </navigation>

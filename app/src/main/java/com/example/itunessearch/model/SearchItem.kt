@@ -1,7 +1,10 @@
 package com.example.itunessearch.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class SearchItem(
     @SerializedName("artworkUrl100")
     val imageUrl: String?,
@@ -11,4 +14,4 @@ data class SearchItem(
     val price: Double?,
     val releaseDate: String?,
     val longDescription: String?
-)
+): Parcelable
