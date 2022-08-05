@@ -16,6 +16,7 @@ class SearchViewModel(application: Application):AndroidViewModel(application) {
     val searchItems by lazy{ MutableLiveData<List<SearchItem>>() }
     val loadError by lazy{ MutableLiveData<Boolean>() }
     val loading by lazy{ MutableLiveData<Boolean>() }
+
     private var apiService = SearchItemApiService()
     private val disposable = CompositeDisposable()
 
