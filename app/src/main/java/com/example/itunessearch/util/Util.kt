@@ -1,9 +1,11 @@
 package com.example.itunessearch.util
 
+import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.itunessearch.R
+import com.example.itunessearch.model.SearchItem
 
 class Util {
     companion object {
@@ -20,3 +22,10 @@ fun ImageView.loadImage(uri: String?) {
         .into(this)
 }
 
+fun getDate(searchItem: SearchItem, view: View): String {
+    val dateList = searchItem.releaseDate?.split("-", "T")
+    return view.resources.getString(
+        R.string.date_format,
+        dateList?.get(2), dateList?.get(1), dateList?.get(0)
+    )
+}

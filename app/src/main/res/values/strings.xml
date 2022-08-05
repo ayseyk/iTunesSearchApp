@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">iTunesSearch</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="music">Music</string>
     <string name="movies">Movies</string>
     <string name="apps">Apps</string>
     <string name="books">Books</string>
     <string name="search_hilt">Movies, Music, Apps or Books</string>
+    <string name="getting_error_text">An error occured while loading data!</string>
+    <string name="no_items">No items found!</string>
+    <string name="input_error">Enter min 2 letters to search!</string>
 
     <string-array name="search_options_for_api">
         <item>musicTrack</item>
@@ -22,5 +24,6 @@
     </string-array>
 
     <string name="price_format">%1$s USD</string>
+    <string name="date_format">%1$s.%2$s.%3$s</string>
 
 </resources>

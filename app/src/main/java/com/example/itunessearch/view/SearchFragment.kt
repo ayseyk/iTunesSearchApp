@@ -29,7 +29,7 @@ class SearchFragment : Fragment() {
 
     private val searchItemListDataObserver = Observer<List<SearchItem>>{ list ->
         list?.let{
-            if(list.isEmpty()) {
+            if(list.isEmpty() && inputError.visibility == View.GONE) {
                 noItems.visibility = View.VISIBLE
             } else {
                 noItems.visibility = View.GONE
@@ -136,8 +136,14 @@ class SearchFragment : Fragment() {
     }
 
     private fun refreshItemList() {
-        term = binding.searchBar.text.toString()
-        viewModel.refresh(term, entity)
-        refreshLayout.isRefreshing = false
+        if (search_bar.text.length <= 2) {
+            inputError.visibility = View.VISIBLE
+            listAdapter.clearList()
+        } else {
+            inputError.visibility = View.GONE
+            term = binding.searchBar.text.toString()
+            viewModel.refresh(term, entity)
+            refreshLayout.isRefreshing = false
+        }
     }
 }

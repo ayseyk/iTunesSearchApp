@@ -7,6 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.itunessearch.R
 import com.example.itunessearch.model.SearchItem
+import com.example.itunessearch.util.getDate
 import com.example.itunessearch.util.loadImage
 import kotlinx.android.synthetic.main.item_search.view.*
 
@@ -22,6 +23,11 @@ class SearchItemListAdapter(private val searchItemList: ArrayList<SearchItem>) :
         notifyDataSetChanged()
     }
 
+    fun clearList() {
+        searchItemList.clear()
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_search, parent, false)
         return SearchItemViewHolder(view)
@@ -30,17 +36,18 @@ class SearchItemListAdapter(private val searchItemList: ArrayList<SearchItem>) :
     override fun getItemCount(): Int = searchItemList.size
 
     override fun onBindViewHolder(holder: SearchItemViewHolder, position: Int) {
-
-        holder.view.itemImage.loadImage(searchItemList[position].imageUrl)
-
         holder.apply {
+            view.itemImage.loadImage(searchItemList[position].imageUrl)
             view.itemName.text = searchItemList[position].name
-            if(searchItemList[position].price != null) {
-                view.itemPrice.text = holder.view.resources.getString(R.string.price_format, searchItemList[position].price.toString())
+            view.releaseDate.text = getDate(searchItemList[position], holder.view)
+
+            if (searchItemList[position].price != null) {
+                view.itemPrice.text = holder.view.resources.getString(
+                    R.string.price_format,
+                    searchItemList[position].price.toString()
+                )
                 view.itemPrice.visibility = View.VISIBLE
             }
-
-            view.releaseDate.text = searchItemList[position].releaseDate
         }
         holder.view.searchItemLayout.setOnClickListener {
             val action = SearchFragmentDirections.searchToDetail(searchItemList[position])

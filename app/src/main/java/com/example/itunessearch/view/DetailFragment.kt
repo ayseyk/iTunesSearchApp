@@ -31,7 +31,7 @@ class DetailFragment : Fragment() {
 
         itemImageDetail.loadImage(searchItem?.imageUrl)
         name.text = searchItem?.name
-        longDescription.text = searchItem?.longDescription ?: "nulldıırr"
+        longDescription.text = searchItem?.longDescription
         println("bu uzun açıklama: ${searchItem?.longDescription}")
         if (searchItem?.price != null) price.text =
             resources.getString(R.string.price_format, searchItem?.price.toString())
