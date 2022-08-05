@@ -5,20 +5,22 @@
     <string name="movies">Movies</string>
     <string name="apps">Apps</string>
     <string name="books">Books</string>
-    <string name="searchHilt">Movies, Music, Apps or Books</string>
+    <string name="search_hilt">Movies, Music, Apps or Books</string>
 
-    <string-array name="searchOptionsForApi">
+    <string-array name="search_options_for_api">
         <item>musicTrack</item>
         <item>movie</item>
         <item>software</item>
         <item>ebook</item>
     </string-array>
 
-    <string-array name="searchOptions">
+    <string-array name="search_options">
         <item>Music</item>
         <item>Movies</item>
         <item>Apps</item>
         <item>Books</item>
     </string-array>
+
+    <string name="price_format">%1$s USD</string>
 
 </resources>

@@ -1,21 +1,14 @@
 package com.example.itunessearch.view
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.Target
 import com.example.itunessearch.R
 import com.example.itunessearch.model.SearchItem
 import com.example.itunessearch.util.loadImage
-import kotlinx.android.synthetic.main.fragment_search.view.*
 import kotlinx.android.synthetic.main.item_search.view.*
-import kotlinx.coroutines.NonDisposableHandle.parent
-import kotlin.coroutines.coroutineContext
 
 
 class SearchItemListAdapter(private val searchItemList: ArrayList<SearchItem>) : RecyclerView
@@ -42,12 +35,17 @@ class SearchItemListAdapter(private val searchItemList: ArrayList<SearchItem>) :
 
         holder.apply {
             view.itemName.text = searchItemList[position].name
-            view.itemPrice.text = searchItemList[position].price.toString()
+            if(searchItemList[position].price != null) {
+                view.itemPrice.text = holder.view.resources.getString(R.string.price_format, searchItemList[position].price.toString())
+                view.itemPrice.visibility = View.VISIBLE
+            }
+
             view.releaseDate.text = searchItemList[position].releaseDate
         }
-        /*holder.view.searchItemsList.setOnClickListener {
-            onClick(holder.view)
-        }*/
+        holder.view.searchItemLayout.setOnClickListener {
+            val action = SearchFragmentDirections.searchToDetail(searchItemList[position])
+            Navigation.findNavController(holder.view).navigate(action)
+        }
     }
 
     override fun onClick(v: View) {

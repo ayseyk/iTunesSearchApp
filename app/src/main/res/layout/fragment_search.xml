@@ -18,7 +18,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="15dp"
-            android:hint="@string/searchHilt"
+            android:hint="@string/search_hilt"
             android:importantForAutofill="no"
             android:inputType="text"
             android:imeOptions="actionSearch"

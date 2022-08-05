@@ -70,7 +70,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun initializeViews() {
-        searchOptionsForApi = resources.getStringArray(R.array.searchOptionsForApi)
+        searchOptionsForApi = resources.getStringArray(R.array.search_options_for_api)
         entity = searchOptionsForApi[0]
         viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
 
@@ -98,7 +98,7 @@ class SearchFragment : Fragment() {
             R.drawable.ic_baseline_apps_24,
             R.drawable.ic_baseline_book_24
         )
-        searchOptions = resources.getStringArray(R.array.searchOptions)
+        searchOptions = resources.getStringArray(R.array.search_options)
 
         for (i in 0..3) {
             tab.apply {

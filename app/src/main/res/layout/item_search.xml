@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
+    android:id="@+id/searchItemLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -32,6 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/itemName"
         app:layout_constraintStart_toStartOf="@id/itemName"
         app:layout_constraintEnd_toEndOf="@+id/itemName"/>
@@ -42,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/itemPrice"
-        app:layout_constraintStart_toStartOf="@id/itemPrice"
-        app:layout_constraintEnd_toEndOf="@+id/itemPrice"/>
+        app:layout_constraintStart_toStartOf="@id/itemName"
+        app:layout_constraintEnd_toEndOf="@+id/itemName"/>
 
 
 
