@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3EBDC1CC"
+
     tools:context=".view.DetailFragment">
 
     <ImageView
@@ -41,7 +43,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/black"
+        android:background="#E1121010"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/longDescription"
@@ -61,7 +63,7 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@color/button_blue"
+            android:background="#3EBDC1CC"
             android:gravity="center"
             android:text="BUY"
             android:textColor="@color/white"

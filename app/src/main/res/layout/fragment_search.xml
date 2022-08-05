@@ -5,6 +5,7 @@
     android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home_background"
     tools:context=".view.SearchFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,6 +31,7 @@
             android:id="@+id/tabLayout"
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:background="#00FFFFFF"
             app:layout_constraintEnd_toEndOf="@id/search_bar"
             app:layout_constraintStart_toStartOf="@id/search_bar"
             app:layout_constraintTop_toBottomOf="@id/search_bar">
