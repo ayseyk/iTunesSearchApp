@@ -1,54 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="15dp"
-    android:id="@+id/searchItemLayout"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/itemImage"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_margin="10dp"
-        android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="searchItem"
+            type="com.example.itunessearch.model.SearchItem" />
+        <variable
+            name="listener"
+            type="com.example.itunessearch.view.SearchItemClickListener" />
+    </data>
 
-    <TextView
-        android:id="@+id/itemName"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/searchItemLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/itemImage"
-        app:layout_constraintStart_toStartOf="@id/itemImage"
-        app:layout_constraintTop_toBottomOf="@+id/itemImage" />
+        android:layout_margin="15dp">
 
-    <TextView
-        android:id="@+id/itemPrice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/itemName"
-        app:layout_constraintStart_toStartOf="@id/itemName"
-        app:layout_constraintEnd_toEndOf="@+id/itemName"/>
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:imageUrl="@{searchItem.imageUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/releaseDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/itemPrice"
-        app:layout_constraintStart_toStartOf="@id/itemName"
-        app:layout_constraintEnd_toEndOf="@+id/itemName"/>
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@{searchItem.name}"
+            app:layout_constraintEnd_toEndOf="@+id/itemImage"
+            app:layout_constraintStart_toStartOf="@id/itemImage"
+            app:layout_constraintTop_toBottomOf="@+id/itemImage" />
 
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="@{searchItem.price == null ? View.GONE : View.VISIBLE}"
+            android:text="@{searchItem.price == null ? @string/is_null : String.format(@string/price_format, searchItem.price.toString())}"
+            app:layout_constraintEnd_toEndOf="@+id/itemName"
+            app:layout_constraintStart_toStartOf="@id/itemName"
+            app:layout_constraintTop_toBottomOf="@+id/itemName" />
 
+        <TextView
+            android:id="@+id/releaseDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="@+id/itemName"
+            app:layout_constraintStart_toStartOf="@id/itemName"
+            app:layout_constraintTop_toBottomOf="@+id/itemPrice" />
 
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
