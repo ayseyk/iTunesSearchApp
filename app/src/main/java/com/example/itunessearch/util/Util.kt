@@ -2,6 +2,7 @@ package com.example.itunessearch.util
 
 import android.view.View
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.itunessearch.R
@@ -28,4 +29,9 @@ fun getDate(searchItem: SearchItem, view: View): String {
         R.string.date_format,
         dateList?.get(2), dateList?.get(1), dateList?.get(0)
     )
+}
+
+@BindingAdapter("android:imageUrl")
+fun loadImageFromUrl(view : ImageView, url : String?) {
+    view.loadImage(url)
 }

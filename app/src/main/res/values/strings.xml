@@ -9,6 +9,7 @@
     <string name="no_items">No items found!</string>
     <string name="input_error">Enter min 2 letters to search!</string>
     <string name="buy">BUY</string>
+    <string name="is_null"> </string>
 
     <string-array name="search_options_for_api">
         <item>musicTrack</item>
