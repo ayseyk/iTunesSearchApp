@@ -1,5 +1,6 @@
 package com.example.itunessearch.view
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,12 +17,14 @@ class SearchItemListAdapter(private val searchItemList: ArrayList<SearchItem>) :
 
     class SearchItemViewHolder(var view: ItemSearchBinding) : RecyclerView.ViewHolder(view.root)
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateSearchItemList(newSearchItemList: List<SearchItem>) {
         searchItemList.clear()
         searchItemList.addAll(newSearchItemList)
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun clearList() {
         searchItemList.clear()
         notifyDataSetChanged()

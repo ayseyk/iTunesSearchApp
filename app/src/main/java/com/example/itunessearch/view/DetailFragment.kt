@@ -1,17 +1,14 @@
 package com.example.itunessearch.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.itunessearch.R
 import com.example.itunessearch.databinding.FragmentDetailBinding
 import com.example.itunessearch.model.SearchItem
-import com.example.itunessearch.util.loadImage
-import kotlinx.android.synthetic.main.fragment_detail.*
-import kotlinx.android.synthetic.main.fragment_detail.view.*
 
 class DetailFragment : Fragment() {
 
