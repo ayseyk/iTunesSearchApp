@@ -3,6 +3,7 @@ package com.example.itunessearch.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.itunessearch.di.DaggerViewModelComponent
 import com.example.itunessearch.model.JsonObject
 import com.example.itunessearch.model.SearchItem
 import com.example.itunessearch.model.SearchItemApiService
@@ -10,6 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class SearchViewModel(application: Application):AndroidViewModel(application) {
 
@@ -17,8 +19,13 @@ class SearchViewModel(application: Application):AndroidViewModel(application) {
     val loadError by lazy{ MutableLiveData<Boolean>() }
     val loading by lazy{ MutableLiveData<Boolean>() }
 
-    private var apiService = SearchItemApiService()
+    @Inject
+    lateinit var apiService: SearchItemApiService
     private val disposable = CompositeDisposable()
+
+    init {
+        DaggerViewModelComponent.create().inject(this)
+    }
 
     fun refresh(term: String, entity: String) {
         loading.value = true
