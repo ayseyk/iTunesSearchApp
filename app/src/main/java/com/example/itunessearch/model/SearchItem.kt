@@ -13,5 +13,6 @@ data class SearchItem(
     @SerializedName("collectionPrice")
     val price: Double?,
     val releaseDate: String?,
+    @SerializedName("description")
     val longDescription: String?
 ): Parcelable

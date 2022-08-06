@@ -8,46 +8,55 @@
 
     tools:context=".view.DetailFragment">
 
-    <ImageView
-        android:id="@+id/itemImageDetail"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="20dp"
-        android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintBottom_toTopOf="@id/name"
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="@id/itemImageDetail"
-        app:layout_constraintStart_toStartOf="@id/itemImageDetail"
-        app:layout_constraintTop_toBottomOf="@id/itemImageDetail" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/longDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:layout_constraintEnd_toEndOf="@id/name"
-        app:layout_constraintStart_toStartOf="@id/name"
-        app:layout_constraintTop_toBottomOf="@id/name" />
+
+            <ImageView
+                android:id="@+id/itemImageDetail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/longDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"/>
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#E1121010"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/longDescription"
-        app:layout_constraintStart_toStartOf="@id/longDescription">
+        app:layout_constraintEnd_toEndOf="@id/scroll"
+        app:layout_constraintStart_toStartOf="@id/scroll">
 
         <TextView
             android:id="@+id/price"
@@ -65,8 +74,9 @@
             android:layout_weight="1"
             android:background="#3EBDC1CC"
             android:gravity="center"
-            android:text="BUY"
+            android:text="@string/buy"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
