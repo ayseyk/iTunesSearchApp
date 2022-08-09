@@ -14,8 +14,6 @@ import com.example.itunessearch.databinding.FragmentSearchBinding
 import com.example.itunessearch.model.SearchItem
 import com.example.itunessearch.viewmodel.SearchViewModel
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.fragment_search.*
-
 
 class SearchFragment : Fragment() {
 
@@ -25,37 +23,43 @@ class SearchFragment : Fragment() {
     private lateinit var viewModel: SearchViewModel
     private lateinit var entity: String
     private lateinit var term: String
+    //TODO null tanımla ve ata
     private val listAdapter = SearchItemListAdapter(arrayListOf())
 
-    private val searchItemListDataObserver = Observer<List<SearchItem>>{ list ->
-        list?.let{
-            if(list.isEmpty() && inputError.visibility == View.GONE) {
-                noItems.visibility = View.VISIBLE
+    private val searchItemListDataObserver = Observer<List<SearchItem>> { list ->
+        list?.let {
+            if (list.isEmpty() && binding.inputError.visibility == View.GONE) {
+                binding.noItems.visibility = View.VISIBLE
             } else {
-                noItems.visibility = View.GONE
-                searchItemsList.visibility = View.VISIBLE
+                binding.noItems.visibility = View.GONE
+                binding.searchItemsList.visibility = View.VISIBLE
                 listAdapter.updateSearchItemList(it)
             }
         }
     }
 
     private val loadingLiveDataObserver = Observer<Boolean> { isLoading ->
-        progressBar.visibility = if(isLoading) View.VISIBLE else View.GONE
-        if(isLoading){
-            listError.visibility = View.GONE
-            searchItemsList.visibility = View.GONE
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        if (isLoading) {
+            binding.listError.visibility = View.GONE
+            binding.searchItemsList.visibility = View.GONE
         }
     }
 
-    private val errorLiveDataObserver = Observer<Boolean>{ isError ->
-        listError.visibility = if(isError) View.VISIBLE else View.GONE
+    private val errorLiveDataObserver = Observer<Boolean> { isError ->
+        binding.listError.visibility = if (isError) View.VISIBLE else View.GONE
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = FragmentSearchBinding.inflate(layoutInflater)
+        createTabs()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSearchBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -63,9 +67,6 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initializeViews()
-        createTabs()
-        setTabs()
-        clickTabItem(0)
         initializeEvents()
     }
 
@@ -80,17 +81,9 @@ class SearchFragment : Fragment() {
             loadError.observe(viewLifecycleOwner, errorLiveDataObserver)
         }
 
-        searchItemsList.adapter = listAdapter
+        binding.searchItemsList.adapter = listAdapter
     }
     private fun createTabs() {
-        tabLayout.apply {
-            for(i in 0..3) {
-                addTab(tabLayout.newTab())
-            }
-        }
-    }
-
-    private fun setTabs() {
         var tab = CustomTabBinding.inflate(layoutInflater)
         val iconList = arrayListOf(
             R.drawable.ic_baseline_music_note_24,
@@ -98,6 +91,13 @@ class SearchFragment : Fragment() {
             R.drawable.ic_baseline_apps_24,
             R.drawable.ic_baseline_book_24
         )
+
+        binding.tabLayout.apply {
+            for(i in 0..3) {
+                addTab(binding.tabLayout.newTab())
+            }
+        }
+
         searchOptions = resources.getStringArray(R.array.search_options)
 
         for (i in 0..3) {
@@ -105,7 +105,8 @@ class SearchFragment : Fragment() {
                 optionIcon.setImageResource(iconList[i])
                 optionTopic.text = searchOptions[i]
             }
-            tabLayout.getTabAt(i)!!.customView = tab.root
+            binding.tabLayout.getTabAt(i)!!.customView = tab.root
+            //TODO null kontrolü """GENEL PROJEDE""!
             tab = CustomTabBinding.inflate(layoutInflater)
         }
     }
@@ -116,7 +117,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun initializeEvents() {
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 clickTabItem(tab!!.position)
             }
@@ -126,24 +127,24 @@ class SearchFragment : Fragment() {
             }
         })
 
-        refreshLayout.setOnRefreshListener {
+        binding.refreshLayout.setOnRefreshListener {
             refreshItemList()
         }
 
-        search_bar.doAfterTextChanged {
+        binding.searchBar.doAfterTextChanged {
             refreshItemList()
         }
     }
 
     private fun refreshItemList() {
-        if (search_bar.text.length <= 2) {
-            inputError.visibility = View.VISIBLE
+        if (binding.searchBar.text.length <= 2) { // TODO sbait!!
+            binding.inputError.visibility = View.VISIBLE
             listAdapter.clearList()
         } else {
-            inputError.visibility = View.GONE
+            binding.inputError.visibility = View.GONE
             term = binding.searchBar.text.toString()
             viewModel.refresh(term, entity)
-            refreshLayout.isRefreshing = false
+            binding.refreshLayout.isRefreshing = false
         }
     }
 }
