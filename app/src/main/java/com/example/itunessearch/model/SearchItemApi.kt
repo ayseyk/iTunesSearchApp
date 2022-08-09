@@ -10,5 +10,5 @@ interface SearchItemApi {
     fun getSearchItems(
         @Query("term") term: String,
         @Query("entity") entity: String
-    ): Single<JsonObject>
+    ): Single<SearchResultResponse>
 }

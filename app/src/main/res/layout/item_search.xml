@@ -16,6 +16,8 @@
         android:id="@+id/searchItemLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{listener.onClick}"
+        android:tag="@{searchItem.name}"
         android:layout_margin="15dp">
 
         <ImageView

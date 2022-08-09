@@ -42,11 +42,6 @@ class SearchItemListAdapter(private val searchItemList: ArrayList<SearchItem>) :
         holder.view.searchItem = searchItemList[position]
         holder.view.listener = this
         holder.view.releaseDate.text = getDate(searchItemList[position], holder.itemView)
-
-        holder.view.searchItemLayout.setOnClickListener {
-            val action = SearchFragmentDirections.searchToDetail(searchItemList[position])
-            Navigation.findNavController(it).navigate(action)
-        }
     }
 
     override fun onClick(v: View) {

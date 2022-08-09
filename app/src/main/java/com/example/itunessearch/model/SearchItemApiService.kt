@@ -13,7 +13,7 @@ class SearchItemApiService {
         DaggerApiComponent.create().inject(this)
     }
 
-    fun getSearchItems(term: String, entity: String): Single<JsonObject> {
+    fun getSearchItems(term: String, entity: String): Single<SearchResultResponse> {
         return itemApi.getSearchItems(term, entity)
     }
 }
