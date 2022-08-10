@@ -28,7 +28,7 @@ class SearchFragment : Fragment() {
 
     private val searchItemListDataObserver = Observer<List<SearchItem>> { list ->
         binding.isEmpty = list.isEmpty()
-        if(list.isNotEmpty()) listAdapter.updateSearchItemList(list)
+        if (list.isNotEmpty()) listAdapter.updateSearchItemList(list)
     }
 
     private val loadingLiveDataObserver = Observer<Boolean> { isLoading ->
@@ -82,7 +82,7 @@ class SearchFragment : Fragment() {
         )
 
         binding.tabLayout.apply {
-            for(i in 0..3) {
+            for (i in 0..3) {
                 addTab(binding.tabLayout.newTab())
             }
         }
@@ -105,14 +105,16 @@ class SearchFragment : Fragment() {
     }
 
     private fun initializeEvents() {
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab != null) {
                     clickTabItem(tab.position)
                 }
             }
+
             override fun onTabUnselected(tab: TabLayout.Tab?) {
             }
+
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
         })
@@ -133,8 +135,7 @@ class SearchFragment : Fragment() {
         } else {
             term = binding.searchBar.text.toString()
             binding.refreshLayout.isRefreshing = false
-
-            if(term != null && entity != null)
+            if (term != null && entity != null)
                 viewModel.refresh(term!!, entity!!)
         }
     }
