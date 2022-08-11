@@ -63,7 +63,7 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
             android:layout_marginTop="15dp"
-            android:visibility="@{isLoading || isEmpty ? View.GONE : View.VISIBLE}"
+            android:visibility="@{isLoading || isEmpty || isInputShort ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/searchBar"
             app:layout_constraintStart_toStartOf="@id/searchBar"
